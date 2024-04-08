@@ -6,27 +6,18 @@ namespace LegacyApp
 {
     public class ClientRepository
     {
-        /// <summary>
-        /// This collection is used to simulate remote database
-        /// </summary>
-        public static readonly Dictionary<int, Client> Database = new Dictionary<int, Client>()
+        // This collection is used to simulate remote database
+        public static readonly Dictionary<int, Client> Database = new()
         {
-            {1, new Client{ClientId = 1, Name = "Kowalski", Address = "Warszawa, Złota 12", Email = "kowalski@wp.pl", Type = "NormalClient"}},
-            {2, new Client{ClientId = 2, Name = "Malewski", Address = "Warszawa, Koszykowa 86", Email = "malewski@gmail.pl", Type = "VeryImportantClient"}},
-            {3, new Client{ClientId = 3, Name = "Smith", Address = "Warszawa, Kolorowa 22", Email = "smith@gmail.pl", Type = "ImportantClient"}},
-            {4, new Client{ClientId = 4, Name = "Doe", Address = "Warszawa, Koszykowa 32", Email = "doe@gmail.pl", Type = "ImportantClient"}},
-            {5, new Client{ClientId = 5, Name = "Kwiatkowski", Address = "Warszawa, Złota 52", Email = "kwiatkowski@wp.pl", Type = "NormalClient"}},
-            {6, new Client{ClientId = 6, Name = "Andrzejewicz", Address = "Warszawa, Koszykowa 52", Email = "andrzejewicz@wp.pl", Type = "NormalClient"}}
+            {1, new Client("Kowalski", "kowalski@wp.pl", "Warszawa, Złota 12" ,"NormalClient")},
+            {2, new Client("Malewski", "malewski@gmail.pl", "Warszawa, Koszykowa 86", "VeryImportantClient")},
+            {3, new Client("Smith", "smith@gmail.pl", "Warszawa, Kolorowa 22", "ImportantClient")},
+            {4, new Client("Doe", "doe@gmail.pl", "Warszawa, Koszykowa 32", "ImportantClient")},
+            {5, new Client("Kwiatkowski", "kwiatkowski@wp.pl", "Warszawa, Złota 52", "NormalClient")},
+            {6, new Client("Andrzejewicz", "andrzejewicz@wp.pl", "Warszawa, Koszykowa 52", "NormalClient")}
         };
         
-        public ClientRepository()
-        {
-        }
-
-        /// <summary>
-        /// Simulating fetching a client from remote database
-        /// </summary>
-        /// <returns>Returning client object</returns>
+        // Simulating fetching a client from remote database
         internal Client GetById(int clientId)
         {
             int randomWaitTime = new Random().Next(2000);
